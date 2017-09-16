@@ -1,0 +1,26 @@
+<div class="row msgs-menu">
+  <div class="toolbar col-xs-12">
+    <toolbar></toolbar>
+  </div>
+  <header-menu [name]='menuName' [icon]='icon'></header-menu>
+
+  <ul class="messages col-xs-12" *ngIf="!mode">
+    <li *ngFor="let message of state.messages; let i = index" (click)="currentMessage = i" [ngClass]="{'current-message': currentMessage == i}">
+      {{message.length > 60 ? message.substr(0,60) + "..." : message}}
+    </li>
+  </ul>
+
+  <div class="messages add-message" *ngIf="mode === 'add'">
+    <textarea [(ngModel)]="message" class="add-msg-area" autofocus ></textarea>
+  </div>
+
+  <div class="messages add-message" *ngIf="mode === 'edit'">
+    <textarea [(ngModel)]="message" class="add-msg-area" autofocus >{{state.messages[currentMessage]}}</textarea>
+  </div>
+
+  <div class="messages add-message" *ngIf="mode === 'show'">
+    <p class="add-msg-area">{{state.messages[currentMessage]}}</p>
+  </div>
+
+  <sub-menu [menuItems]="menuItems" *ngIf="subMenuTrigger"></sub-menu>
+</div>

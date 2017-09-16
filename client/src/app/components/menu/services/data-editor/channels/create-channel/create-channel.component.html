@@ -1,0 +1,23 @@
+<div class="row">
+  <header-menu [name]="menuName" [icon]="icon"></header-menu>
+  <div class="col-xs-12">
+    <form>
+      <div class="form-group">
+        <label for="ch-name">Название канала</label>
+        <input type="text" id="ch-name" name="name" [(ngModel)]="name">
+      </div>
+      <div class="form-group">
+        <label for="mods">Выберите режим</label>
+        <select id="mods" name="mode" [(ngModel)]="mode">
+          <option value="TETRA_DMO">ТЕТРА - DMO</option>
+          <option value="CHM_25">ЧМ - 25</option>
+          <option value="Another">Другой режим</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="ch-freq">Частота</label>
+        <input type="number" id="ch-freq" name="frequency" [(ngModel)]="frequency">
+      </div>
+    </form>
+  </div>
+</div>

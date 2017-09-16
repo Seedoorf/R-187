@@ -1,0 +1,14 @@
+<div class="row screen start-screen">
+    <div class="col-xs-12">
+        <toolbar></toolbar>
+        <div class="row">
+            <div class="base-mode">Открытый режим</div>
+        </div>
+    </div>
+    <phone *ngIf="urlParams.message"></phone>
+    <div class="cur-mode-info">
+        <p>{{chName}}</p>
+        <p>{{dirName}}</p>
+        <p>{{date}}</p>
+    </div>
+</div>

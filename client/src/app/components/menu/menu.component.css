@@ -1,0 +1,46 @@
+.menu-screen {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  background: url("../../../assets/images/wallpaper.jpg") no-repeat 0 50%;
+  background-size: cover;
+  height: 100%;
+}
+
+.toolbar {
+  height: 20%;
+  background-color: transparent;
+}
+
+.main-menu {
+  justify-self: flex-end;
+  background-color: #fff;
+  display: flex;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-item {
+  padding: 27px 10px;
+  font-size: 20px;
+}
+
+.menu-item:active {
+  background-color: #7b007b;
+  color: #fff;
+}
+
+.menu-item:hover {
+  cursor: pointer;
+}
+
+.menu-item span {
+  text-decoration: none;
+  color: #000;
+}
+
+.fa {
+  margin-right: 10px;
+}

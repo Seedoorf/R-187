@@ -1,0 +1,9 @@
+<div class="row recv-msg-menu">
+  <header-menu [name]="menuName" [icon]="icon"></header-menu>
+  <ul class="main-menu col-xs-12">
+    <li *ngFor="let direction of directions; let i = index">
+      <span class="dir-name">{{direction.name}}</span><br>
+      <span class="ch-name">{{getChName(direction.channelId, channels, "name")}}</span>
+    </li>
+  </ul>
+</div>
