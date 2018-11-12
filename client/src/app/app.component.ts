@@ -32,7 +32,7 @@ export class AppComponent implements OnInit{
     this.appState.set('notifications', []);
     console.log(this.appState.state);
     if (!this.appState.state.ssi)
-      this.appState.storage.set('ssi', randomInt(1, 256));
+      this.appState.storage.set('ssi', randomInt(1, 256)); // id fix
 
     this.socketService.init();
   }
@@ -40,5 +40,6 @@ export class AppComponent implements OnInit{
 
   button_push(button) {
     this.appState.button_push(button);
+    console.log(button);
   }
 }

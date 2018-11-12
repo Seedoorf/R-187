@@ -21,6 +21,7 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
   mode = null;
   currentMessage;
   subMenuTrigger = false;
+  subscription;
   menuItems = [
     {
       name: 'Просмотр',
@@ -54,9 +55,39 @@ export class RecvMessagesComponent implements OnInit, OnDestroy {
         route: this.path
       }
     });
+
+    this.subscription = this.appState.state.button.subscribe(data => {
+      switch (data) {
+        case 13: // back
+          if(!this.subMenuTrigger) {
+          this.router.navigate([this.appState.state['footerButtons'].right.route]);
+          }
+          else {
+            this.triggerSubMenu();
+          }
+          break;
+        case 11: // choose
+          this.triggerSubMenu();
+          break;
+        case 12: // up
+         // if (!this.subMenuTrigger) {
+           this.currentMessage = this.currentMessage === 0 ?
+                      this.state.recvMsgs.length - 1 : this.currentMessage -= 1;
+        //  }
+          break;
+        case 15: // down
+         // if (!this.subMenuTrigger) {
+          this.currentMessage = this.currentMessage === this.state.recvMsgs.length - 1 ?
+                      0 : this.currentMessage + 1; 
+         //}
+          break;
+      }
+    });
+
   }
 
   ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   showMessage() {

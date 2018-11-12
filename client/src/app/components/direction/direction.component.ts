@@ -15,6 +15,7 @@ export class DirectionComponent implements OnInit {
   channels;
   state;
   socket;
+  curCh;
 
   constructor(
     private appState: AppState,
@@ -29,6 +30,7 @@ export class DirectionComponent implements OnInit {
     this.socket = this.socketService.socket;
     this.directions = this.state.directions;
     this.channels = this.state.channels;
+    this.curCh = 0;
 
     this.appState.set('footerButtons', {
       left: {
@@ -43,8 +45,15 @@ export class DirectionComponent implements OnInit {
 
     this.subscription = this.appState.state.button.subscribe(data => {
       switch (data) {
-        case 13:
+        case 11: // choose
+
+          break;
+        case 13: // back
           this.router.navigate([this.appState.state['footerButtons'].right.route]);
+          break;
+        case 12: // up
+          break;
+        case 15: // down
           break;
       }
     });

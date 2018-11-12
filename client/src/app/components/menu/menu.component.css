@@ -22,6 +22,10 @@
   justify-content: space-between;
 }
 
+.main-menu li {
+
+}
+
 .menu-item {
   padding: 27px 10px;
   font-size: 20px;
@@ -43,4 +47,9 @@
 
 .fa {
   margin-right: 10px;
+}
+
+.current-point {
+  background-color: black;
+  color: white;
 }

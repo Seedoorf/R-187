@@ -24,11 +24,6 @@ export class MenuComponent implements OnInit, OnDestroy  {
       route: null,
     },
     {
-      name: 'Статусные сообщения',
-      icon: 'null',
-      route: null,
-    },
-    {
       name: 'Принятые сообщения',
       icon: 'fa-envelope',
       route: '/recv-messages',
@@ -37,11 +32,6 @@ export class MenuComponent implements OnInit, OnDestroy  {
       name: 'Сообщения',
       icon: 'fa-envelope',
       route: '/messages',
-    },
-    {
-      name: 'Настройки',
-      icon: 'fa-cogs',
-      route: null,
     },
     {
       name: 'Сервисное меню',
@@ -66,6 +56,8 @@ export class MenuComponent implements OnInit, OnDestroy  {
   }
 
   ngOnInit() {
+    this.curIndex = 0;
+
     this.appState.set('footerButtons', {
       left: {
         text: 'Выбрать',
@@ -79,11 +71,18 @@ export class MenuComponent implements OnInit, OnDestroy  {
 
     this.subscription = this.appState.state.button.subscribe(data => {
       switch (data) {
-        case 13:
+        case 13: // back
           this.router.navigate([this.appState.state['footerButtons'].right.route]);
           break;
-        case 11:
-          this.items[this.curIndex].route ? this.router.navigate([this.items[this.curIndex].route]) : null;
+        case 11: // choose
+          this.items[this.curIndex].route ? this.router.navigate([this.router.url + this.items[this.curIndex].route]) : null;
+          break;
+        case 12: // up
+          this.curIndex = this.curIndex === 0 ? this.items.length - 1 : this.curIndex -1;
+          // change style
+          break;
+        case 15: // down
+          this.curIndex = this.curIndex === this.items.length - 1 ? 0 : this.curIndex + 1; 
           break;
       }
     });

@@ -14,7 +14,7 @@ class Server {
         this.app.use(bodyParser.json());
         this.app.use(bodyParser.urlencoded({extended: false}));
         this.app.use(express.static(__dirname + '/client/build'));
-
+        
         this.createRoutes();
         this.createServer();
         this.createSockets();
@@ -104,7 +104,8 @@ class Server {
             });
         });
     }
+    
 }
-
 module.exports = new Server;
+
 
